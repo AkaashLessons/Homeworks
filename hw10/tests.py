@@ -46,19 +46,29 @@ class SecondLetterPTest(unittest.TestCase):
 
     def test_with_p(self):
         self.assertEqual(debug.second_letter_p("apricot"), "apricot")
+        
 class RecursiveSumTest(unittest.TestCase):
     def test_list_empty(self):
-        self.assertEqual(debug.recursive_sum([]),[0])
+        self.assertEqual(debug.recursive_sum([]),0)
+    def test_one_num(self):
+        self.assertEqual(debug.recursive_sum([11]), 11)
+    def test_nested_empt(self):
+        self.assertEqual(debug.recursive_sum([[],[]]), 0)
     def test_no_nests(self):
-        self.assertEqual(debug.recursive_sum ([1,5,2,3]), [11])
+        self.assertEqual(debug.recursive_sum ([1,5,2,3]), 11)
     def test_with_nests(self):
-         self.assertEqual(debug.recursive_sum([1, 2, [3,4], [6, [0,2]]]), [18])
+         self.assertEqual(debug.recursive_sum([1, 2, [3,4], [6, [0,2]]]), 18)
             
 class ListToDictsTest(unittest.TestCase):
     def test_value_words(self):
-        self.assertEqual(debug.list_to_dicts(["strawberries", "clementines", "bananas"]["red", "orange", "yellow"]), {"strawberries":"red", "clementines":"orange", "bananas":"yellow"})
+        self.assertEqual(debug.lists_to_dict(["strawberries", "clementines", "bananas"],["red", "orange", "yellow"]), {"strawberries":"red", "clementines":"orange", "bananas":"yellow"})
     def test_value_number(self):
-        self.assertEqual(debug.list_to_dicts(["strawberries", "clementines", "bananas"]["3","7","8"], {"strawberries":"3", "clementines": "7", "bananas":"8"
+        self.assertEqual(debug.lists_to_dict(["strawberries", "clementines", "bananas"],[3,7,8]), {"strawberries":3, "clementines": 7, "bananas":8})
+    def test_empty_list(self):
+        self.assertEqual(debug.lists_to_dict([1,2,3], []), {})
+    def test_diff_lengths(self):
+        self.assertEqual(debug.lists_to_dict(["strawberries", "clementines", "bananas"],[3,7,8,5,6]),  {"strawberries":3, "clementines": 7, "bananas":8})
+
                          
 
 ##don't have to do anything with this line
